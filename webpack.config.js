@@ -8,16 +8,24 @@ const distPath = path.join(__dirname,'dist');
 
 module.exports = () => {
   return {
-    entry: './src/index.jsx',
+    entry: './src/index.tsx',
     output: {
       path: distPath,
       filename: 'main.js'
     },
+    resolve: {
+      extensions: [ '.tsx', '.ts', '.js' ],
+    },
     module: {
       rules: [
         {
+          test: /\.tsx?$/,
+          exclude: /node_modules/,
+          use: ['ts-loader','eslint-loader']
+        },
+        {
           test: /\.(js|jsx)$/,
-          resolve: { extensions: [".js", ".jsx"] },
+          resolve: { extensions: ['.js', '.jsx'] },
           exclude: /node_modules/,
           use: ['babel-loader','eslint-loader']
         },
