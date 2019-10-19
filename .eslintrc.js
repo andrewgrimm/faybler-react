@@ -1,10 +1,16 @@
 
 module.exports = {
    'parser': '@typescript-eslint/parser',
-   'plugins': ['@typescript-eslint'],
+   'plugins': ['@typescript-eslint', 'only-warn'],
    'extends': ['airbnb'],
    'rules': {
      'react/jsx-filename-extension': 0,
+     'no-unused-vars': 'off',
+     '@typescript-eslint/no-unused-vars': ['error', {
+       'vars': 'all',
+       'args': 'after-used',
+       'ignoreRestSiblings': false,
+     }],
    },
    'settings': {
     'import/extensions': ['.js','.jsx','.ts','.tsx'],
@@ -17,6 +23,7 @@ module.exports = {
          }
      },
    },
+   'env': {
+    'browser': true,
 }
-
-// TODO - Modify eslint so warning is shown instead of throwing error.
+}

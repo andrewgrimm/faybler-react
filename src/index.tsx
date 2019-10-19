@@ -2,12 +2,12 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
+import AppRouter from './routers/AppRouter';
+
 const jsx = (
-  <h1>
-    Faybler
-  </h1>
+  <>
+    <AppRouter />
+  </>
 );
 
-/* eslint-disable no-undef */
 ReactDOM.render(jsx, document.getElementById('app'));
-/* eslint-enable no-undef */

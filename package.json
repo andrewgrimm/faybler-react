@@ -20,9 +20,18 @@
   },
   "homepage": "https://github.com/andrewgrimm/faybler#readme",
   "dependencies": {
+    "@material-ui/core": "^4.5.1",
+    "@material-ui/icons": "^4.5.1",
+    "@material-ui/styles": "^4.5.0",
+    "@types/material-ui": "^0.21.7",
+    "@types/react-router-dom": "^5.1.0",
+    "clsx": "^1.0.4",
+    "install": "^0.13.0",
+    "npm": "^6.12.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.4",
-    "react-dom": "^16.8.4"
+    "react-dom": "^16.8.4",
+    "react-router-dom": "^5.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
@@ -42,7 +51,8 @@
     "eslint-loader": "^3.0.2",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.15.1",
+    "eslint-plugin-only-warn": "^1.0.1",
+    "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^1.7.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
