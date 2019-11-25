@@ -39,7 +39,7 @@ const AppMenu: React.FunctionComponent<{}> = () => {
   return (
     <>
       <Fab
-        color="primary"
+        color="secondary"
         aria-label="add"
         size="small"
         className={classes.margin}

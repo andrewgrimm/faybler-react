@@ -1,45 +1,55 @@
+/* eslint-disable react/prop-types */
 import React, { FunctionComponent } from 'react';
+import { connect } from 'react-redux';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import clsx from 'clsx';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
+import { getFeaturedBooks } from '../store/actions';
+import Book from '../models/book/book';
+import BookCover from './BookCover';
 import Copyright from './Copyright';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
+  banner: {
+    backgroundColor: '#03a9f4',
+    textAlign: 'center',
+    padding: '1px',
+    fontFamily: 'Pacifico',
+    fontSize: '1.2em',
+  },
   container: {
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
-  },
-  paper: {
-    padding: theme.spacing(2),
-    display: 'flex',
-    overflow: 'auto',
-    flexDirection: 'column',
-    minHeight: 320,
-  },
-  fixedHeight: {
-    height: 320,
+    marginBottom: 0,
   },
 }));
 
-const Featured: React.FunctionComponent<{}> = () => {
-  const classes = useStyles({});
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+type FeaturedProps = {
+  getFeatured: any,
+  featuredBooks: Book[],
+}
+
+const Featured: FunctionComponent<FeaturedProps> = ({ featuredBooks, getFeatured }) => {
+  const classes = useStyles();
+
+  if (!featuredBooks.length) {
+    getFeatured();
+  }
 
   return (
     <div>
+      <div className={classes.banner}>
+        <h1>
+          Faybler
+        </h1>
+      </div>
       <Container maxWidth="lg" className={classes.container}>
         <Grid container spacing={3}>
           {
-            [1, 2, 3, 4, 5, 6, 7, 8, 9].map((el: number) => (
-              <Grid item xs={12} md={4} lg={4}>
-                <Paper className={fixedHeightPaper}>
-                  <h1>{el}</h1>
-                </Paper>
-              </Grid>
+            featuredBooks.map((book: Book) => (
+              <BookCover book={book} key={book.id} />
             ))
-        }
+          }
         </Grid>
       </Container>
       <Copyright />
@@ -47,4 +57,10 @@ const Featured: React.FunctionComponent<{}> = () => {
   );
 };
 
-export default Featured;
+const mapDispatchToProps = (dispatch:any) => ({
+  getFeatured: () => dispatch(getFeaturedBooks()),
+});
+
+const mapStateToProps = (state: any) => ({ featuredBooks: state.featuredBooks });
+
+export default connect(mapStateToProps, mapDispatchToProps)(Featured);

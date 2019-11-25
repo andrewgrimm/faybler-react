@@ -16,15 +16,15 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.(tsx|ts)?$/,
         exclude: /node_modules/,
-        use: ['ts-loader', 'eslint-loader'],
+        use: ['ts-loader'],
       },
       {
         test: /\.(js|jsx)$/,
         resolve: { extensions: ['.js', '.jsx'] },
         exclude: /node_modules/,
-        use: ['babel-loader', 'eslint-loader'],
+        use: ['babel-loader'],
 
       },
       {

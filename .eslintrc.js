@@ -1,7 +1,7 @@
 
 module.exports = {
    'parser': '@typescript-eslint/parser',
-   'plugins': ['@typescript-eslint', 'only-warn'],
+   'plugins': ['@typescript-eslint', 'only-warn', 'eslint-plugin-html'],
    'extends': ['airbnb'],
    'rules': {
      'react/jsx-filename-extension': 0,
